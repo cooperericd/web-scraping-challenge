@@ -18,6 +18,8 @@ def scrape():
      # Update the Mongo database using update and upsert=True
     mongo.db.collection.update({}, mars_data, upsert=True)
 
+    return redirect("/")
+
 # Route to render index.html template using data from Mongo
 @app.route("/")
 def home():

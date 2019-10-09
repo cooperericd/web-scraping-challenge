@@ -23,9 +23,8 @@ def scrape():
     browser.visit(image_url)
     image_html = browser.html
     soup_two = bs(image_html, 'lxml')
-    featured_images = soup_two.find_all('a', class_='button fancybox')
-    for image in featured_images:
-        x = image.get('data-fancybox-href')
+    featured_images = soup_two.find('a', class_='button fancybox')
+    x = featured_images.get('data-fancybox-href')
     featured_image_url = 'https://www.jpl.nasa.gov' + x
 
     #twitter scrape
@@ -58,22 +57,10 @@ def scrape():
     soup_syrtis_major = bs(response_syrtis_major.text, 'html.parser')
     soup_valles_marineris = bs(response_valles_marineris.text, 'html.parser')
 
-    cerberus_img_find = soup_cerberus.find_all('img', class_='wide-image')
-    schiaparelli_img_find = soup_schiaparelli.find_all('img', class_='wide-image')
-    syrtis_major_img_find = soup_syrtis_major.find_all('img', class_='wide-image')
-    valles_marineris_img_find = soup_valles_marineris.find_all('img', class_='wide-image')
-
-    for image in cerberus_img_find:
-        cerberus = image.get('src')
-
-    for image in schiaparelli_img_find:
-        schiaparelli = image.get('src')
-        
-    for image in syrtis_major_img_find:
-        syrtis_major = image.get('src')
-        
-    for image in valles_marineris_img_find:
-        valles_marineris = image.get('src')
+    cerberus = soup_cerberus.find('img', class_='wide-image').get('src')
+    schiaparelli = soup_schiaparelli.find('img', class_='wide-image').get('src')
+    syrtis_major = soup_syrtis_major.find('img', class_='wide-image').get('src')
+    valles_marineris = soup_valles_marineris.find('img', class_='wide-image').get('src')
 
     cerberus_image = 'https://astrogeology.usgs.gov' + cerberus
     schiaparelli_image = 'https://astrogeology.usgs.gov' + schiaparelli
