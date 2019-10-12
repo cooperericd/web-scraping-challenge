@@ -81,7 +81,11 @@ def scrape():
         "featured_image": featured_image_url,
         "current_weather": mars_weather,
         "mars_facts_table": html_table,
-        "hemisphere_images": hemisphere_image_urls
+        "cerberus_image": cerberus_image,
+        "schiaparelli_image": schiaparelli_image,
+        "syrtis_major_image": syrtis_major_image,
+        "valles_marineris_image": valles_marineris_image,
+
     }
 
     browser.quit()
